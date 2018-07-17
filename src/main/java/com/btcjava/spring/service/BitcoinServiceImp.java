@@ -38,7 +38,7 @@ public class BitcoinServiceImp implements BitcoinService {
                 try {
                     Date date = new Date();
                    String NowDate= new SimpleDateFormat("yyyy-MM-dd").format(date);
-                   LocalDate StartDateTime = LocalDate.now().minusDays(id/60);
+                   LocalDate StartDateTime = LocalDate.now().minusHours(id/60);
                    String StartDate= new SimpleDateFormat("yyyy-MM-dd").format(StartDateTime);
                    HttpResponse<String> BitcoinResponse = Unirest.get("https://api.coindesk.com/v1/bpi/historical/close.json?start="+StartDate+"&end="+NowDate).asString();
                    Bitcoin btc = new Bitcoin(id, BitcoinResponse.getBody());
